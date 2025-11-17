@@ -33,3 +33,9 @@ void neopixel_set_color_hex(const char* hexString) {
     // Đặt màu (ví dụ: màu đen #000000 sẽ tắt LED)
     neopixel_set_color((uint32_t)colorValue);
 }
+// Hàm để đặt độ sáng của NeoPixel
+// --- HÀM MỚI ĐỂ ĐẶT ĐỘ SÁNG ---
+void neopixel_set_brightness(uint8_t brightness) {
+    strip.setBrightness(brightness); // Đặt độ sáng
+    strip.show(); // Áp dụng độ sáng (hiển thị lại màu hiện tại với độ sáng mới)
+}

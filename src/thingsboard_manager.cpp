@@ -47,6 +47,16 @@ void tb_callback(char* topic, byte* payload, unsigned int length) {
             neopixel_set_color_hex(colorHex); // Gọi hàm mới
         }
     }
+
+    // --- THÊM XỬ LÝ LỆNH 'setBrightness' ---
+    if (strcmp(method, "setBrightness") == 0) {
+        int brightness = doc["params"]; // Nhận giá trị số (0-255)
+        Serial.print("Lệnh 'setBrightness' nhận được: ");
+        Serial.println(brightness);
+
+        // Gọi hàm mới, ép kiểu về byte
+        neopixel_set_brightness((uint8_t)brightness);
+    }
   Serial.println("--------------------");
 }
 
