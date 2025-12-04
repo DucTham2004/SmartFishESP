@@ -21,3 +21,6 @@
 // THÊM CẤU HÌNH NEOPIXEL
 #define NEOPIXEL_PIN 27   // Chân DATA nối với DIN
 #define NEOPIXEL_COUNT 12 // Số lượng LED (bạn có 12)
+
+// THÊM CẤU HÌNH SERVO
+#define SERVO_PIN 13
