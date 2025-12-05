@@ -24,3 +24,8 @@
 
 // THÊM CẤU HÌNH SERVO
 #define SERVO_PIN 13
+
+// --- CẤU HÌNH MÁY SƯỞI (DEMO BẰNG LED/RELAY) ---
+#define HEATER_PIN 5            // Chọn chân GPIO 5
+#define TEMP_THRESHOLD_ON 28.5  // Nhiệt độ thấp hơn mức này sẽ BẬT sưởi
+#define TEMP_THRESHOLD_OFF 29.0 // Nhiệt độ cao hơn mức này sẽ TẮT sưởi

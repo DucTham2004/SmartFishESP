@@ -56,6 +56,9 @@ void setup()
 
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
+  // Cấu hình chân điều khiển máy sưởi
+  pinMode(HEATER_PIN, OUTPUT);
+  digitalWrite(HEATER_PIN, LOW); // Mặc định tắt
 
   setup_neopixel();
   setup_servo();
@@ -93,6 +96,21 @@ void loop()
     float h = dht.readHumidity();
     float t = dht.readTemperature();
     float distance = getDistance_cm(); // <-- LẤY DỮ LIỆU MỚI
+
+    // --- LOGIC TỰ ĐỘNG BẬT SƯỞI ---
+    if (!isnan(t))
+    { // Chỉ xử lý nếu đọc được nhiệt độ hợp lệ
+      if (t < TEMP_THRESHOLD_ON)
+      {
+        digitalWrite(HEATER_PIN, HIGH); // Bật Relay/LED
+        Serial.println("Nhiệt độ thấp! Đã BẬT máy sưởi.");
+      }
+      else if (t > TEMP_THRESHOLD_OFF)
+      {
+        digitalWrite(HEATER_PIN, LOW); // Tắt Relay/LED
+        Serial.println("Nhiệt độ đạt yêu cầu. Đã TẮT máy sưởi.");
+      }
+    }
 
     // In ra Serial để kiểm tra
     Serial.print("Khoảng cách: ");
