@@ -8,7 +8,7 @@
 
 // --- CẤU HÌNH THINGSBOARD ---
 #define TB_SERVER "eu.thingsboard.cloud"
-#define TB_TOKEN "oU0vQ2FnDV0Tq05Lkdrl"
+#define TB_TOKEN "f4ChAIxFLvvUKETpTgxi"
 #define TB_PORT 1883
 
 // --- CẤU HÌNH CẢM BIẾN & PIN ---
