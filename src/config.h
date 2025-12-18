@@ -29,3 +29,8 @@
 #define HEATER_PIN 5            // Chọn chân GPIO 5
 #define TEMP_THRESHOLD_ON 28.5  // Nhiệt độ thấp hơn mức này sẽ BẬT sưởi
 #define TEMP_THRESHOLD_OFF 29.0 // Nhiệt độ cao hơn mức này sẽ TẮT sưởi
+
+// --- CẤU HÌNH MÁY BƠM NƯỚC ---
+#define PUMP_PIN 25                   // Chân điều khiển relay máy bơm (GPIO34 chỉ input, dùng GPIO25 thay thế)
+#define WATER_LEVEL_THRESHOLD_ON 10.0 // Khoảng cách (cm) > ngưỡng này = mực nước thấp -> BẬT bơm
+#define WATER_LEVEL_THRESHOLD_OFF 5.0 // Khoảng cách (cm) < ngưỡng này = mực nước đủ -> TẮT bơm

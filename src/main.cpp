@@ -60,6 +60,10 @@ void setup()
   pinMode(HEATER_PIN, OUTPUT);
   digitalWrite(HEATER_PIN, LOW); // Mặc định tắt
 
+  // Cấu hình chân điều khiển máy bơm nước
+  pinMode(PUMP_PIN, OUTPUT);
+  digitalWrite(PUMP_PIN, LOW); // Mặc định tắt
+
   setup_neopixel();
   setup_servo();
 
@@ -109,6 +113,22 @@ void loop()
       {
         digitalWrite(HEATER_PIN, LOW); // Tắt Relay/LED
         Serial.println("Nhiệt độ đạt yêu cầu. Đã TẮT máy sưởi.");
+      }
+    }
+
+    // --- LOGIC TỰ ĐỘNG BẬT MÁY BƠM NƯỚC ---
+    // Khoảng cách càng lớn = mực nước càng thấp
+    if (distance > 0)
+    { // Chỉ xử lý nếu đọc được khoảng cách hợp lệ
+      if (distance > WATER_LEVEL_THRESHOLD_ON)
+      {
+        digitalWrite(PUMP_PIN, HIGH); // Bật máy bơm
+        Serial.println("Mực nước thấp! Đã BẬT máy bơm.");
+      }
+      else if (distance < WATER_LEVEL_THRESHOLD_OFF)
+      {
+        digitalWrite(PUMP_PIN, LOW); // Tắt máy bơm
+        Serial.println("Mực nước đủ. Đã TẮT máy bơm.");
       }
     }
 
