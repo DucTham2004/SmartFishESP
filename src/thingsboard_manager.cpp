@@ -6,6 +6,7 @@
 #include "thingsboard_manager.h" // Include chính nó
 #include "neopixel_manager.h"
 #include "servo_manager.h"
+#include "settings_manager.h" // <-- THÊM DÒNG NÀY
 
 /**
  * @brief Hàm xử lý lệnh RPC đến
@@ -71,6 +72,20 @@ void tb_callback(char *topic, byte *payload, unsigned int length)
     Serial.println("Nhận lệnh cho cá ăn!");
     feed_fish(); // Gọi hàm quay servo
   }
+
+  // --- XỬ LÝ LỆNH 'setThresholds' (MỚI) ---
+  if (strcmp(method, "setThresholds") == 0)
+  {
+    const char *params = doc["params"];
+    if (params != NULL)
+    {
+      Serial.println("Nhận lệnh 'setThresholds':");
+      Serial.println(params);
+      settings_update_from_json(params);
+    }
+  }
+
+  Serial.println("--------------------");
   Serial.println("--------------------");
 }
 

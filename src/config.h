@@ -1,6 +1,6 @@
 // src/config.h
 
-#pragma once // Đảm bảo file này chỉ được include 1 lần
+#pragma once
 
 // --- CẤU HÌNH WIFI ---
 #define WIFI_SSID "ductham2004"
@@ -19,18 +19,21 @@
 #define ECHO_PIN 14
 
 // THÊM CẤU HÌNH NEOPIXEL
-#define NEOPIXEL_PIN 27   // Chân DATA nối với DIN
-#define NEOPIXEL_COUNT 12 // Số lượng LED (bạn có 12)
+#define NEOPIXEL_PIN 27
+#define NEOPIXEL_COUNT 12
 
 // THÊM CẤU HÌNH SERVO
 #define SERVO_PIN 13
 
-// --- CẤU HÌNH MÁY SƯỞI (DEMO BẰNG LED/RELAY) ---
-#define HEATER_PIN 5            // Chọn chân GPIO 5
-#define TEMP_THRESHOLD_ON 28.5  // Nhiệt độ thấp hơn mức này sẽ BẬT sưởi
-#define TEMP_THRESHOLD_OFF 29.0 // Nhiệt độ cao hơn mức này sẽ TẮT sưởi
+// --- CẤU HÌNH MÁY SƯỞI ---
+#define HEATER_PIN 5
 
-// --- CẤU HÌNH MÁY BƠM NƯỚC ---
-#define PUMP_PIN 25                   // Chân điều khiển relay máy bơm (GPIO34 chỉ input, dùng GPIO25 thay thế)
-#define WATER_LEVEL_THRESHOLD_ON 10.0 // Khoảng cách (cm) > ngưỡng này = mực nước thấp -> BẬT bơm
-#define WATER_LEVEL_THRESHOLD_OFF 5.0 // Khoảng cách (cm) < ngưỡng này = mực nước đủ -> TẮT bơm
+// --- CẤU HÌNH MÁY BƠM ---
+#define PUMP_PIN 25
+
+// --- GIÁ TRỊ MẶC ĐỊNH CHO NGƯỠNG (sẽ được ghi đè bởi giá trị từ EEPROM) ---
+#define DEFAULT_TANK_HEIGHT 30.0f
+#define DEFAULT_TEMP_THRESHOLD_ON 28.5f
+#define DEFAULT_TEMP_THRESHOLD_OFF 29.0f
+#define DEFAULT_WATER_LEVEL_ON 10.0f
+#define DEFAULT_WATER_LEVEL_OFF 20.0f
