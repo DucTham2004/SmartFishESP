@@ -130,32 +130,32 @@ void tb_reconnect(PubSubClient &client)
 
 /**
  * @brief Gửi dữ liệu (telemetry)
+ * @param waterLevel: Mực nước thực tế (cm) = tankHeight - khoảng cách đo được
  */
-// SỬA HÀM NÀY ĐỂ NHẬN THÊM 'distance'
-void tb_send_telemetry(PubSubClient &client, float temp, float humid, float distance)
+void tb_send_telemetry(PubSubClient &client, float temp, float humid, float waterLevel)
 {
   if (isnan(humid) || isnan(temp))
   {
     Serial.println("Lỗi đọc dữ liệu DHT11!");
-    // Vẫn gửi distance ngay cả khi DHT lỗi
+    // Vẫn gửi waterLevel ngay cả khi DHT lỗi
   }
 
-  Serial.print("Đang chuẩn bị dữ liệu: ");
+  Serial.print("[ThingsBoard] Gửi: Nhiệt độ=");
   Serial.print(temp);
-  Serial.print("°C, ");
+  Serial.print("°C, Độ ẩm=");
   Serial.print(humid);
-  Serial.print("%, Khoảng cách: ");
-  Serial.print(distance);
+  Serial.print("%, Mực nước=");
+  Serial.print(waterLevel);
   Serial.println(" cm");
 
   StaticJsonDocument<200> doc;
   doc["nhietDo"] = temp;
   doc["doAm"] = humid;
 
-  // THÊM DỮ LIỆU MỚI (chỉ gửi nếu đọc thành công)
-  if (distance > 0)
+  // Gửi mực nước thực tế (chỉ gửi nếu đọc thành công)
+  if (waterLevel >= 0)
   {
-    doc["mucNuoc_cm"] = distance;
+    doc["mucNuoc_cm"] = waterLevel;
   }
 
   char jsonBuffer[200];

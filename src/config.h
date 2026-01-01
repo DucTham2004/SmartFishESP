@@ -19,7 +19,7 @@
 #define ECHO_PIN 14
 
 // THÊM CẤU HÌNH NEOPIXEL
-#define NEOPIXEL_PIN 27
+#define NEOPIXEL_PIN 26
 #define NEOPIXEL_COUNT 12
 
 // THÊM CẤU HÌNH SERVO
