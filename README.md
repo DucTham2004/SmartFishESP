@@ -455,9 +455,9 @@ Dự án này được phân phối dưới giấy phép MIT. Xem file `LICENSE`
 
 ## 📞 Liên Hệ
 
-- **Tác giả**: [Tên của bạn]
-- **Email**: [email@example.com]
-- **GitHub**: [https://github.com/your-username](https://github.com/your-username)
+- **Tác giả**: Nguyễn Đức Thắm
+- **Email**: ductham2004@gmail.com
+- **GitHub**: [https://github.com/Ductham95](https://github.com/Ductham95)
 
 ---
 
